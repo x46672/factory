@@ -1,7 +1,9 @@
 
 <p>
+Posted <%= distance_of_time_in_words(comment.article.created_at, comment.created_at) %> ago
+<p>
 Author: <%= comment.author_name %>
 <p>
-Says: <%= comment.body %>
+Says: "<%= comment.body %>"
 <p>
 ------------------------------------

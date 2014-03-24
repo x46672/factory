@@ -4,12 +4,12 @@
 <%= form_for [ @article, @comment ] do |f| %>
   
     <p>
-    <%= f.label :author_name %>
+    <%= f.label :author_name, "Your Name" %>
     <p>
     <%= f.text_field :author_name %>
   
     <p>
-    <%= f.label :body %>
+    <%= f.label :body, "Your Comment" %>
     <p>
     <%= f.text_area :body %>
   
