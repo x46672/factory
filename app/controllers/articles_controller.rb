@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    article_params = params.require(:article).permit(:title, :body)
+    article_params = params.require(:article).permit(:title, :body, :tag_list)
     @article = Article.new(article_params)
     @article.save
     redirect_to article_path(@article)
@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    article_params = params.require(:article).permit(:title, :body)
+    article_params = params.require(:article).permit(:title, :body, :tag_list)
     @article.update(article_params)
 
     flash.notice = "Article '#{@article.title}' Updated!"
