@@ -1,0 +1,42 @@
+
+    <header id="header">
+        <nav class="navbar navbar-inverse">
+            <!-- add "wihite" class for white nav bar -->
+
+            <div class="container">
+                <!-- Mobile Menu Button -->
+                <button class="fa fa-bars" data-target=".navbar-collapse"
+                data-toggle="collapse" id="mobileMenu" type="button"></button> 
+                <!-- Brand and toggle get grouped for better mobile display -->
+
+                <div class="navbar-header">
+                    <%= image_tag "l2a.png" %>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+
+                <div class="collapse navbar-collapse" id=
+                "bs-example-navbar-collapse-1">
+                    <!-- Fullscreen Button - Unavailable for IE -->
+                    <a class="btn-fullscreen" href="#"></a>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><% if logged_in? %></li>
+
+                        <li><%= "Hey #{current_user.username}" %></li>
+
+                        <li><%= link_to "(logout)", logout_path %></li>
+
+                        <li>
+                        <% else %><%= link_to "(login)", login_path %><% end %></li>
+
+                        <li><%= link_to "Blog", articles_path %></li>
+
+                        <li><a class="scrollTo" href="#contact">Contact</a>
+                        </li>
+                        <li><%= link_to "HOME", root_path %>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+    </header>

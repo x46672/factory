@@ -1,17 +1,125 @@
-<h1/>All Articles</h1>
+<!-- BLOG HEADER -->
+    <div class="inner-cover blog-header" style=
+    "background-image:url('assets/images/preview/slider/vision.jpg')">
+        <!--<span class="overlay"></span>-->
 
+        <div class="text-center">
+            <h1 class="big-title">FACTORY LABS BLOG</h1>
 
-  <% @articles.each do |article| %>
-    
-      <p/>
-      <strong/><%= link_to article.title, article_path(article) %></strong>
-      </p>
-      <p/>
-      <%= truncate(article.body, length: 140, seperator: '') %>
-      </p>
+            <p>FIND OUT WHAT WE ARE UP TO</p>
+        </div>
+    </div><!-- /BLOG HEADER -->
+    <!-- Main Nav -->
+    <%= render 'front/nav' %><!-- /Main Nav -->
+    <!-- BLOG -->
 
-  <% end %>
+    <section id="blog">
+        <article class="container">
+            <div class="row">
+                <div class="left col-md-9">
+                    <!-- blog item -->
 
-<%= link_to "Create a New Article", new_article_path, class: "new_article" %>
-<p>
-<%= link_to "All Tags", tags_path %>
+                    <div class="item">
+                        <% @articles.each do |article| %><!-- article title -->
+                        <br>
+                        <br>
+
+                        <div class="item-title">
+                            <h2><a href=
+                            "#"><%= article.title %></a></h2><a class=
+                            "scrollTo label label-default light" href="#">
+                            date:</a> <a class=
+                            "scrollTo label label-default light" href="#">
+                            <%=article.comments.size %> Comments</a> <a class=
+                            "label label-default light" href="#">Tags:
+                            <% article.tags.each do |tag| %>
+                            <%= link_to tag.name, tag_path(tag) %>
+                            <% end %></a>
+                        </div><!-- image -->
+
+                        <figure>
+                            <% if article.image.exists? %><%= image_tag article.image.url, size: "820x500" %><% else %><%= image_tag '1.png' %><% end %>
+                        </figure><!-- blog short preview -->
+
+                        <p>
+                        <%= truncate(article.body, length: 250, seperator: '') %></p><!-- read more button -->
+                        <%= link_to "Read More", article_path(article) %><br>
+                        <br>
+
+                        <div class="divider">
+                            <!-- lines divider -->
+                        </div><% end %>
+                    </div><!-- /blog item -->
+                    <!-- PAGINATION -->
+
+                    <div class="text-center">
+                        <ul class="pagination">
+                            <li><a href="#"></a></li>
+
+                            <li class="active"><a href="#">1</a></li>
+
+                            <li><a href="#">2</a></li>
+
+                            <li><a href="#">3</a></li>
+
+                            <li><a href="#">4</a></li>
+
+                            <li><a href="#">5</a></li>
+
+                            <li><a href="#"></a></li>
+                        </ul>
+                    </div><!-- /PAGINATION -->
+                </div><!-- SIDEBAR -->
+
+                <div class="right col-md-3">
+                    <!-- blog search -->
+
+                    <div class="widget">
+                        <h3>Blog Search</h3>
+
+                        <form action="#" class=
+                        "blog-search col-lg-12 nomargin nopadding" method=
+                        "get">
+                            <div class="input-group input-group-lg">
+                                <input class="form-control" id="s" name="s"
+                                placeholder="..." type="text">
+                            </div>
+                        </form>
+                    </div><!-- categories -->
+
+                    <div class="widget">
+                        <h3>Categories</h3>
+
+                        <ul>
+                            <li>
+                            <a><%= link_to "All Tags", tags_path %></a></li>
+
+                            <li><a href=
+                            "blog.html"><%= link_to "Create a New Article", new_article_path, class: "new_article" %></a></li>
+                        </ul>
+                    </div><!-- recent posts -->
+
+                    <div class="widget">
+                        <h3>Recent Posts</h3>
+
+                        <ul>
+                            <li><a href="blog-post.html">This is a Gallery
+                            Post</a> <small>23 June 2013 / 12:43</small></li>
+
+                            <li><a href="blog-post.html">Blog Post With Text
+                            Only</a> <small>23 June 2013 / 12:43</small></li>
+
+                            <li><a href="blog-post.html">This is an Audio
+                            Post</a> <small>23 June 2013 / 12:43</small></li>
+
+                            <li><a href="blog-post.html">This is a Video
+                            Post</a> <small>23 June 2013 / 12:43</small></li>
+
+                            <li><a href="blog-post.html">An awsome post</a>
+                            <small>23 June 2013 / 12:43</small></li>
+                        </ul>
+                    </div>
+                </div><!-- /SIDEBAR -->
+            </div>
+        </article>
+    </section><!-- /BLOG -->
